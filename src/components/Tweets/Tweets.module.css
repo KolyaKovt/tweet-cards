@@ -1,0 +1,101 @@
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  width: 380px;
+  height: 460px;
+  padding: 36px;
+  background-image: linear-gradient(
+    142deg,
+    #471ca9 0%,
+    #5736a3 69.1%,
+    #4b2a99 100%
+  );
+  box-shadow: -3px 7px 21px 0 rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
+}
+
+.cardText {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #ebd8ff;
+}
+
+.tweetText {
+  composes: cardText;
+  margin-bottom: 16px;
+}
+
+.followerText {
+  composes: cardText;
+  margin-bottom: 26px;
+}
+
+.button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #373737;
+
+  border: none;
+  border-radius: 10px;
+  transition: all 200ms;
+}
+
+.followButton {
+  composes: button;
+  padding: 14px 56px;
+  background-color: #ebd8ff;
+}
+
+.followingButton {
+  composes: button;
+  padding: 14px 39px;
+  background-color: #5cd3a8;
+}
+
+.absoluteCenter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.doneQuestion {
+  position: absolute;
+  top: 28px;
+}
+
+.boyImg {
+  composes: absoluteCenter;
+  z-index: 2;
+}
+
+.boyUnderline {
+  composes: absoluteCenter;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: black;
+  box-shadow: inset 0 3px 3px 0 #fbf8ff, 0 3px 3px 0 rgba(0, 0, 0, 0.06),
+    inset 0 -2px 3px 0 #ae7be3;
+  background: #ebd8ff;
+}
