@@ -1,3 +1,11 @@
+.container {
+  position: relative;
+  width: 900px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
 .cardsList {
   display: flex;
   flex-direction: column;
@@ -5,7 +13,6 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  padding: 60px 0;
   gap: 40px;
 }
 
@@ -58,16 +65,32 @@
   transition: all 200ms;
 }
 
-.followButton {
+.followButton,
+.back {
   composes: button;
   padding: 14px 56px;
   background-color: #ebd8ff;
+
+  &:hover,
+  &:focus {
+    background-color: #c5b5d6;
+  }
+}
+
+.back {
+  position: sticky;
+  top: 30px;
 }
 
 .followingButton {
   composes: button;
   padding: 14px 39px;
   background-color: #5cd3a8;
+
+  &:hover,
+  &:focus {
+    background-color: #49a785;
+  }
 }
 
 .absoluteCenter {

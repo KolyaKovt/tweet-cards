@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import s from "./Tweets.module.css"
+import s from "./Tweets.module.scss"
 import { User } from "../../Types"
 import { adjustUser, fetchUsers } from "../../services/services"
 import { splitNumberWithComma } from "../../helpers/splitNumberWithComma"
+import { Link } from "react-router-dom"
 
 const Tweets = () => {
   const [users, setUsers] = useState<User[]>([])
@@ -39,37 +40,41 @@ const Tweets = () => {
   }
 
   return (
-    <ul className={s.cardsList}>
-      {users.map(user => {
-        const { isFollowed, id, tweets, followers } = user
+    <div className={s.container}>
+      <Link className={s.back} to="/">Back</Link>
 
-        const btnText = isFollowed ? "Following" : "Follow"
-        const buttonClass = isFollowed ? s.followingButton : s.followButton
-        const followersQuantity = splitNumberWithComma(followers)
+      <ul className={s.cardsList}>
+        {users.map(user => {
+          const { isFollowed, id, tweets, followers } = user
 
-        return (
-          <li className={s.card} key={id}>
-            <img className={s.logo} src="/logo.png" alt="logo" />
-            <img
-              className={s.doneQuestion}
-              src="/done-question.png"
-              alt="question and done signs"
-            />
-            <img className={s.boyImg} src="/boy.png" alt="boy" />
-            <span className={s.boyUnderline}></span>
-            <p className={s.tweetText}>{tweets} tweets</p>
-            <p className={s.followerText}>{followersQuantity} Followers</p>
-            <button
-              className={buttonClass}
-              type="button"
-              onClick={() => handleChnageFollowState(user)}
-            >
-              {btnText}
-            </button>
-          </li>
-        )
-      })}
-    </ul>
+          const btnText = isFollowed ? "Following" : "Follow"
+          const buttonClass = isFollowed ? s.followingButton : s.followButton
+          const followersQuantity = splitNumberWithComma(followers)
+
+          return (
+            <li className={s.card} key={id}>
+              <img className={s.logo} src="/logo.png" alt="logo" />
+              <img
+                className={s.doneQuestion}
+                src="/done-question.png"
+                alt="question and done signs"
+              />
+              <img className={s.boyImg} src="/boy.png" alt="boy" />
+              <span className={s.boyUnderline}></span>
+              <p className={s.tweetText}>{tweets} tweets</p>
+              <p className={s.followerText}>{followersQuantity} Followers</p>
+              <button
+                className={buttonClass}
+                type="button"
+                onClick={() => handleChnageFollowState(user)}
+              >
+                {btnText}
+              </button>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
   )
 }
 
