@@ -4,8 +4,8 @@
   margin: 0 auto;
   min-height: 100vh;
   padding: 40px 0;
+  text-align: center;
 }
-
 .cardsList {
   display: flex;
   flex-direction: column;
@@ -15,7 +15,6 @@
   min-height: 100vh;
   gap: 20px;
 }
-
 .card {
   position: relative;
   display: flex;
@@ -34,31 +33,26 @@
   box-shadow: -3px 7px 21px 0 rgba(0, 0, 0, 0.23);
   border-radius: 20px;
 }
-
 .absoluteCenter {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
-
 .logo {
   position: absolute;
   top: 20px;
   left: 20px;
 }
-
 .doneQuestion {
   position: absolute;
   width: 290px;
   top: 28px;
 }
-
 .avatarBase {
   width: 90px;
   height: 90px;
   border-radius: 100%;
 }
-
 .avatar {
   composes: absoluteCenter;
   composes: avatarBase;
@@ -71,13 +65,11 @@
   );
   z-index: 1;
 }
-
 .avatarBorder {
   composes: absoluteCenter;
   composes: avatarBase;
   z-index: 2;
 }
-
 .cardCenterline {
   composes: absoluteCenter;
   left: 0;
@@ -88,7 +80,6 @@
     inset 0 -2px 3px 0 #ae7be3;
   background: #ebd8ff;
 }
-
 .cardText {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
@@ -96,17 +87,14 @@
   text-transform: uppercase;
   color: #ebd8ff;
 }
-
 .tweetText {
   composes: cardText;
   margin-bottom: 16px;
 }
-
 .followerText {
   composes: cardText;
   margin-bottom: 26px;
 }
-
 .button {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -118,11 +106,9 @@
   border-radius: 10px;
   transition: all 200ms;
 }
-
 .followButton {
   padding: 14px 56px;
 }
-
 .followButton,
 .back {
   composes: button;
@@ -133,7 +119,6 @@
     background-color: #c5b5d6;
   }
 }
-
 .back {
   position: fixed;
   padding: 10px;
@@ -141,7 +126,6 @@
   top: 22px;
   left: 20px;
 }
-
 .followingButton {
   composes: button;
   padding: 14px 39px;
@@ -151,6 +135,10 @@
   &:focus {
     background-color: #49a785;
   }
+}
+.more {
+  composes: followButton;
+  margin-top: 30px;
 }
 
 @media (min-width: 425px) {

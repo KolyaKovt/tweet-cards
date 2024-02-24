@@ -12,6 +12,8 @@ import { useMediaQuery } from "react-responsive"
 const Tweets = () => {
   const [users, setUsers] = useState<User[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [page, setPage] = useState(1)
+  const limit = 3
 
   const isMobile = useMediaQuery({
     query: `(max-device-width: 424px)`,
@@ -60,16 +62,20 @@ const Tweets = () => {
       .catch(() => setIsLoading(false))
   }
 
+  const amountToShow = Math.min(limit * page, users.length)
+  const usersToshow = users.slice(0, amountToShow)
+  const canBeMore = amountToShow !== users.length
+
   return (
     <div className={s.container}>
       <Link className={s.back} to="/">
-      {isMobile ? "⬅" : "back"}
+        {isMobile ? "⬅" : "back"}
       </Link>
 
       {isLoading && <Loader />}
 
       <ul className={s.cardsList}>
-        {users.map(user => {
+        {usersToshow.map(user => {
           const { isFollowed, id, tweets, followers, avatar, name } = user
 
           const btnText = isFollowed ? "Following" : "Follow"
@@ -105,6 +111,11 @@ const Tweets = () => {
           )
         })}
       </ul>
+      {canBeMore && (
+        <button className={s.more} onClick={() => setPage(prev => prev + 1)}>
+          Load more...
+        </button>
+      )}
     </div>
   )
 }
