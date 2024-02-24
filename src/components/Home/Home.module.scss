@@ -9,5 +9,11 @@
 }
 
 .title {
-  font-size: 36px;
+  font-size: 30px;
+}
+
+@media (min-width: 425px) {
+  .title {
+    font-size: 36px;
+  }
 }

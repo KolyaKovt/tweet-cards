@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react"
-import s from "./Tweets.module.scss"
+import { Link } from "react-router-dom"
+
+import { Loader } from "../Loader/Loader"
+
 import { User } from "../../Types"
 import { adjustUser, fetchUsers } from "../../services/services"
 import { splitNumberWithComma } from "../../helpers/splitNumberWithComma"
-import { Link } from "react-router-dom"
-import { Loader } from "../Loader/Loader"
+import s from "./Tweets.module.scss"
+import { useMediaQuery } from "react-responsive"
 
 const Tweets = () => {
   const [users, setUsers] = useState<User[]>([])
   const [isLoading, setIsLoading] = useState(false)
+
+  const isMobile = useMediaQuery({
+    query: `(max-device-width: 424px)`,
+  })
 
   useEffect(() => {
     setIsLoading(true)
@@ -56,7 +63,7 @@ const Tweets = () => {
   return (
     <div className={s.container}>
       <Link className={s.back} to="/">
-        Back
+      {isMobile ? "⬅" : "back"}
       </Link>
 
       {isLoading && <Loader />}
@@ -84,7 +91,7 @@ const Tweets = () => {
                 src="/ellipse.png"
                 alt="avatar's border"
               />
-              <span className={s.boyUnderline}></span>
+              <span className={s.cardCenterline}></span>
               <p className={s.tweetText}>{tweets} tweets</p>
               <p className={s.followerText}>{followersQuantity} Followers</p>
               <button
