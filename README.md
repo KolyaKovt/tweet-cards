@@ -1,4 +1,4 @@
-# Result
+# Tweet Cards
 
 ## Technical Implementation
 
@@ -14,7 +14,7 @@
 ## Additional Features
 
 - Integrated a personalized backend using mockapi.io for user data.
-- Created 12 users with different data entries, including id, username, tweets, followers, and avatar images.
+- Created 13 users with different data entries, including id, username, tweets, followers, and avatar images.
 - Implemented pagination with a load more button, displaying 3 tweets per page.
 - Added routing using React Router with the following routes:
   - Home ('/') - Displays the homepage with personalized styling.
