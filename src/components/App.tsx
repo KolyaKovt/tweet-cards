@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import Home from "./Home/Home"
-import Tweets from "./Tweets/Tweets"
+import Home from "../pages/Home/Home"
+import Tweets from "../pages/Tweets/Tweets"
 
 function App() {
   return (

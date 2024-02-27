@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-import { Loader } from "../Loader/Loader"
+import { Loader } from "../../components/Loader/Loader"
 
 import { User } from "../../Types"
 import { adjustUser, fetchUsers } from "../../services/services"
