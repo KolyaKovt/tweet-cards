@@ -85,12 +85,6 @@ const Tweets = () => {
 
           return (
             <li className={s.card} key={id}>
-              <img className={s.logo} src="/logo.png" alt="logo" />
-              <img
-                className={s.doneQuestion}
-                src="/done-question.png"
-                alt="question and done signs"
-              />
               <img className={s.avatar} src={avatarRes} alt={name} />
               <img
                 className={s.avatarBorder}
