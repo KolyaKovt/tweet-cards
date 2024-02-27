@@ -67,50 +67,48 @@ const Tweets = () => {
   const canBeMore = amountToShow !== users.length
 
   return (
-    <div className={s.container}>
-      <Link className={s.back} to="/">
-        {isMobile ? "⬅" : "back"}
-      </Link>
+    <main>
+      <section className={s.container}>
+        <h1 className="visually-hidden">tweets</h1>
 
-      {isLoading && <Loader />}
+        <Link className={s.back} to="/">
+          {isMobile ? "⬅" : "back"}
+        </Link>
 
-      <ul className={s.cardsList}>
-        {usersToshow.map(user => {
-          const { isFollowed, id, tweets, followers, avatar, name } = user
+        {isLoading && <Loader />}
 
-          const btnText = isFollowed ? "Following" : "Follow"
-          const buttonClass = isFollowed ? s.followingButton : s.followButton
-          const followersQuantity = splitNumberWithComma(followers)
-          const avatarRes = avatar ? avatar : "/default-avatar.png"
+        <ul className={s.cardsList}>
+          {usersToshow.map(user => {
+            const { isFollowed, id, tweets, followers, avatar, name } = user
 
-          return (
-            <li className={s.card} key={id}>
-              <img className={s.avatar} src={avatarRes} alt={name} />
-              <img
-                className={s.avatarBorder}
-                src="/ellipse.png"
-                alt="avatar's border"
-              />
-              <span className={s.cardCenterline}></span>
-              <p className={s.tweetText}>{tweets} tweets</p>
-              <p className={s.followerText}>{followersQuantity} Followers</p>
-              <button
-                className={buttonClass}
-                type="button"
-                onClick={() => handleChnageFollowState(user)}
-              >
-                {btnText}
-              </button>
-            </li>
-          )
-        })}
-      </ul>
-      {canBeMore && (
-        <button className={s.more} onClick={() => setPage(prev => prev + 1)}>
-          Load more...
-        </button>
-      )}
-    </div>
+            const btnText = isFollowed ? "Following" : "Follow"
+            const buttonClass = isFollowed ? s.followingButton : s.followButton
+            const followersQuantity = splitNumberWithComma(followers)
+            const avatarRes = avatar ? avatar : "/default-avatar.png"
+
+            return (
+              <li className={s.card} key={id}>
+                <img className={s.avatar} src={avatarRes} alt={name} />
+                <p className={s.tweetText}>{tweets} tweets</p>
+                <p className={s.followerText}>{followersQuantity} Followers</p>
+                <button
+                  className={buttonClass}
+                  type="button"
+                  onClick={() => handleChnageFollowState(user)}
+                >
+                  {btnText}
+                </button>
+              </li>
+            )
+          })}
+        </ul>
+        {canBeMore && (
+          <button className={s.more} onClick={() => setPage(prev => prev + 1)}>
+            Load more...
+          </button>
+        )}
+      </section>
+    </main>
   )
 }
 

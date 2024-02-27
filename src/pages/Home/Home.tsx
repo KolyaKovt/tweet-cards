@@ -4,13 +4,15 @@ import tweetS from "../Tweets/Tweets.module.scss"
 
 const Home = () => {
   return (
-    <section className={s.container}>
-      <h1 className={s.title}>Wanna see tweets?</h1>
+    <main>
+      <section className={s.container}>
+        <h1 className={s.title}>Wanna see tweets?</h1>
 
-      <Link className={tweetS.followButton} to={"/tweets"}>
-        See tweets
-      </Link>
-    </section>
+        <Link className={tweetS.followButton} to={"/tweets"}>
+          See tweets
+        </Link>
+      </section>
+    </main>
   )
 }
 
