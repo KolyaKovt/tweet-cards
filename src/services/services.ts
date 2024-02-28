@@ -5,8 +5,17 @@ const api = axios.create({
   baseURL: "https://65d63c32f6967ba8e3bdc174.mockapi.io/",
 })
 
-export const fetchUsers = async () => {
-  const { data } = await api.get<User[]>("/users")
+export const fetchUsers = async (limit: number, page: number) => {
+  const res = await api.get<User[]>("/users", {
+    params: {
+      page,
+      limit,
+    },
+  })
+
+  const { data } = res
+  console.log(res)
+
   return data
 }
 

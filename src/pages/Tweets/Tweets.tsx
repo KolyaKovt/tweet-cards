@@ -9,26 +9,27 @@ import { splitNumberWithComma } from "../../helpers/splitNumberWithComma"
 import s from "./Tweets.module.scss"
 import { useMediaQuery } from "react-responsive"
 
+const limit = 2
+
 const Tweets = () => {
   const [users, setUsers] = useState<User[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1)
-  const limit = 3
-
-  const isMobile = useMediaQuery({
-    query: `(max-device-width: 424px)`,
-  })
 
   useEffect(() => {
     setIsLoading(true)
 
-    fetchUsers()
+    fetchUsers(limit, page)
       .then(res => {
-        setUsers(res)
+        setUsers(prev => [...prev, ...res])
         setIsLoading(false)
       })
       .catch(() => setIsLoading(false))
-  }, [])
+  }, [page])
+
+  const isMobile = useMediaQuery({
+    query: `(max-device-width: 424px)`,
+  })
 
   const handleChnageFollowState = (user: User) => {
     const { isFollowed, followers } = user
@@ -62,10 +63,6 @@ const Tweets = () => {
       .catch(() => setIsLoading(false))
   }
 
-  const amountToShow = Math.min(limit * page, users.length)
-  const usersToshow = users.slice(0, amountToShow)
-  const canBeMore = amountToShow !== users.length
-
   return (
     <main>
       <section className={s.container}>
@@ -78,7 +75,7 @@ const Tweets = () => {
         {isLoading && <Loader />}
 
         <ul className={s.cardsList}>
-          {usersToshow.map(user => {
+          {users.map(user => {
             const { isFollowed, id, tweets, followers, avatar, name } = user
 
             const btnText = isFollowed ? "Following" : "Follow"
@@ -104,11 +101,10 @@ const Tweets = () => {
             )
           })}
         </ul>
-        {canBeMore && (
-          <button className={s.more} onClick={() => setPage(prev => prev + 1)}>
-            Load more...
-          </button>
-        )}
+        
+        <button className={s.more} onClick={() => setPage(prev => prev + 1)}>
+          Load more...
+        </button>
       </section>
     </main>
   )
