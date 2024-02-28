@@ -88,7 +88,9 @@ const Tweets = () => {
 
             return (
               <li className={s.card} key={id}>
-                <img className={s.avatar} src={avatarRes} alt={name} />
+                <div className={s.avatarContainer}>
+                  <img className={s.avatar} src={avatarRes} alt={name} />
+                </div>
                 <p className={s.tweetText}>{tweets} tweets</p>
                 <p className={s.followerText}>{followersQuantity} Followers</p>
                 <button
